@@ -12,11 +12,14 @@ module com.example.notepad {
     requires spring.core;
     requires spring.beans;
     requires java.desktop;
+    requires org.hibernate.orm.core;
 
     opens com.example.notepad to javafx.fxml, spring.core, spring.beans;
     opens com.example.notepad.controller to javafx.fxml, spring.core;
     opens com.example.notepad.service to spring.core;
-    opens com.example.notepad.model to spring.core, spring.beans;
+    opens com.example.notepad.model;
+
+
 
     exports com.example.notepad;
     exports com.example.notepad.controller;
