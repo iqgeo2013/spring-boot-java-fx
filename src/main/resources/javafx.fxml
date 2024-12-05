@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.notepad.controller.NotepadController">
+
+    <MenuBar>
+        <Menu text="File">
+            <MenuItem text="New" onAction="#handleNewFile" fx:id="newMenuItem">
+                <graphic>
+                    <ImageView fx:id="newIcon" fitWidth="16" fitHeight="16"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem text="Open" onAction="#handleOpenFile" fx:id="openMenuItem">
+                <graphic>
+                    <ImageView fx:id="openIcon" fitWidth="16" fitHeight="16"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem text="Save" onAction="#handleSaveFile">
+                <graphic>
+                    <ImageView fx:id="saveIcon" fitWidth="16" fitHeight="16"/>
+                </graphic>
+            </MenuItem>
+            <MenuItem text="Load" onAction="#handleLoadTable">
+                <graphic>
+                    <ImageView fx:id="loadIcon" fitWidth="16" fitHeight="16"/>
+                </graphic>
+            </MenuItem>
+            <Menu text="Edit">
+                <MenuItem text="To Uppercase" onAction="#handleToUpperCase"/>
+            </Menu>
+        </Menu>
+    </MenuBar>
+
+    <TextArea fx:id="textArea" VBox.vgrow="ALWAYS"/>
+</VBox>
