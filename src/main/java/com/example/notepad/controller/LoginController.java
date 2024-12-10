@@ -70,6 +70,7 @@ public class LoginController {
 
 //        String tokenUrl = String.format("%s/realms/%s/protocol/openid-connect/token",
 //                "http://localhost:8080/", "external");
+
         String requestBody = String.format("username=%s&password=%s&client_id=%s&grant_type=password",
                 username, password, "external-client");
 
