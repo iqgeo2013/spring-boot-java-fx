@@ -27,7 +27,6 @@ public class NotepadController {
     @FXML
     private ImageView loadIcon;
 
-
     private final TextService textService;
     private final NoteService noteService;
 
