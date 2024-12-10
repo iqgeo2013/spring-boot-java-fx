@@ -19,6 +19,7 @@ module com.example.notepad {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.module.paramnames;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires static lombok;
 
     opens com.example.notepad to javafx.fxml, spring.core, spring.beans;
     opens com.example.notepad.controller to javafx.fxml, spring.core;

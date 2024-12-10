@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
+@Slf4j
 @Component
 public class LoginController {
 
@@ -69,8 +71,7 @@ public class LoginController {
 
         String token = exchangeForToken(tokenUrl, requestBody);
 
-        System.out.println("Access Token: " + token);
-
+        log.info("Access Token: " + token);
 
         return false;
     }
@@ -79,10 +80,10 @@ public class LoginController {
         try {
             HttpEntity<String> entity = new HttpEntity<>(requestBody, createFormUrlEncodedHeaders());
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-            System.out.println(response);
+            log.debug("Response {}",response);
             return parseAccessToken(response.getBody());
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error exchanging for token", e);
         }
         return null;
     }
