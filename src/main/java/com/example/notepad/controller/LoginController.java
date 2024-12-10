@@ -13,6 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -28,6 +29,9 @@ public class LoginController {
 
     @FXML
     private PasswordField passwordField;
+
+    @Value("${app.oidc.token.url}")
+    private String accessTokenUrl;
 
     private final NotepadApp notepadApp;
     private final RestTemplate restTemplate;
@@ -64,12 +68,12 @@ public class LoginController {
 
     private boolean authenticate(String username, String password) {
 
-        String tokenUrl = String.format("%s/realms/%s/protocol/openid-connect/token",
-                "http://localhost:8080/", "external");
+//        String tokenUrl = String.format("%s/realms/%s/protocol/openid-connect/token",
+//                "http://localhost:8080/", "external");
         String requestBody = String.format("username=%s&password=%s&client_id=%s&grant_type=password",
                 username, password, "external-client");
 
-        String token = exchangeForToken(tokenUrl, requestBody);
+        String token = exchangeForToken(accessTokenUrl, requestBody);
 
         log.info("Access Token: " + token);
 
