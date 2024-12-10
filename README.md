@@ -1,2 +1,1 @@
-not empty
-not empty
+https://spring.io/blog/2023/08/22/tackling-the-oauth2-client-component-model-in-spring-security

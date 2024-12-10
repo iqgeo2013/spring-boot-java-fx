@@ -19,8 +19,6 @@ module com.example.notepad {
     opens com.example.notepad.service to spring.core;
     opens com.example.notepad.model;
 
-
-
     exports com.example.notepad;
     exports com.example.notepad.controller;
     exports com.example.notepad.service;
