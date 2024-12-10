@@ -84,7 +84,7 @@ public class LoginController {
         try {
             HttpEntity<String> entity = new HttpEntity<>(requestBody, createFormUrlEncodedHeaders());
             ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-            log.debug("Response {}",response);
+            log.debug("Response {}", response);
             return parseAccessToken(response.getBody());
         } catch (Exception e) {
             log.error("Error exchanging for token", e);
@@ -102,9 +102,12 @@ public class LoginController {
         try {
             Map<String, String> tokenMap = objectMapper.readValue(jsonResponse, new TypeReference<Map<String, String>>() {
             });
+
+            tokenMap.forEach((key, value) -> log.debug("Key: {}, Value: {}", key, value));
+
             return tokenMap.get("access_token");
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error parsing access token", e);
             return null;
         }
     }
